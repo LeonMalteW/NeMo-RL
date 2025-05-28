@@ -1,6 +1,10 @@
 # GRPO Algorithm Configuration
 defaults: "grpo-deepscaler-1.5b-8K.yaml"
 
+grpo:
+  num_prompts_per_step: 16
+  num_generations_per_prompt: 2
+
 loss_fn:
   reference_policy_kl_penalty: 0.001
   ratio_clip_max: 0.28
@@ -10,10 +14,4 @@ policy:
   max_total_sequence_length: 16384
 
   train_global_batch_size: 32
-  generation_batch_size: 32
-  logprob_batch_size: 2
-
-  generation:
-     vllm_cfg:
-       gpu_memory_utilization: 0.4
-       max_model_len: ${policy.max_total_sequence_length}
+  fsdp_offload_enabled: false
