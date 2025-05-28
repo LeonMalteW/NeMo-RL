@@ -9,6 +9,10 @@ loss_fn:
 policy:
   max_total_sequence_length: 24576
 
+  train_global_batch_size: 16
+  generation_batch_size: 16
+  logprob_batch_size: 1
+
   dtensor_cfg:
     enabled: true
     cpu_offload: true

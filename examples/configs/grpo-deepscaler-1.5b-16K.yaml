@@ -9,6 +9,11 @@ loss_fn:
 policy:
   max_total_sequence_length: 16384
 
+  train_global_batch_size: 32
+  generation_batch_size: 32
+  logprob_batch_size: 2
 
-  dynamic_batching:
-    enabled: False
+  generation:
+     vllm_cfg:
+       gpu_memory_utilization: 0.4
+       max_model_len: ${policy.max_total_sequence_length}
